@@ -263,7 +263,6 @@
   }
   .content {
     width: 80vw;
-    min-height: 400px;
     background-color: var(--primary-color);
     padding: 32px;
     display: flex;
@@ -280,7 +279,7 @@
   .content h1 {
     font-family: var(--oswald);
     font-weight: 400;
-    font-size: 40px;
+    font-size: 24px;
     color: var(--secondary-color);
   }
   .content p {
