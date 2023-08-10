@@ -42,7 +42,6 @@
 <style>
   .first_section {
     width: 100%;
-    height: 40vh;
     padding: 64px 96px;
     display: flex;
     align-items: flex-end;
@@ -101,13 +100,15 @@
     .first_section h1 {
       font-size: 40px;
       width: 100%;
+      line-height: 103%;
     }
     .first_section p {
       width: 100%;
     }
     .first_section {
-      padding: 48px 32px;
+      padding: 48px 32px !important;
       flex-direction: column;
+      gap: 24px;
     }
     .second_section {
       padding: 48px 32px;
