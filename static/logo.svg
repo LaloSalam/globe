@@ -1,0 +1,8 @@
+<svg width="40" height="46" viewBox="0 0 40 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="7.77778" height="7.66667" fill=var(--secondary-color)/>
+<rect x="8.88892" width="31.1111" height="7.66667" fill=var(--secondary-color)/>
+<rect x="40" y="7.66675" width="30.6667" height="7.77778" transform="rotate(90 40 7.66675)" fill=var(--secondary-color)/>
+<rect x="7.77777" y="8.76196" width="29.5714" height="7.77778" transform="rotate(90 7.77777 8.76196)" fill=var(--secondary-color)/>
+<rect x="7.77777" y="30.6667" width="12.2222" height="7.66667" fill=var(--secondary-color)/>
+<path d="M20 30.6667L32.2222 38.3334V46.0001L20 38.3334V30.6667Z" fill=var(--secondary-color)/>
+</svg>
