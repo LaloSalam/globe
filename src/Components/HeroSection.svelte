@@ -34,6 +34,11 @@
   let h1Element;
   let pElement;
 
+  let Cimg;
+  let Cheading;
+  let Csubheading;
+  let Cparagraph;
+
   $: Cimg = heroContent[index].img;
   $: Cheading = heroContent[index].heading;
   $: Csubheading = heroContent[index].subheading;
@@ -74,7 +79,12 @@
   onMount(() => {
     interval = setInterval(autoChangeIndex, 5000);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      imgElement = null;
+      h1Element = null;
+      pElement = null;
+    };
   });
 
   function handleSlideChange(id) {
@@ -82,9 +92,8 @@
     contIndexChange(iden);
   }
 
-  let active;
-
   let isReading;
+
   function handleReadMore() {
     clearInterval(interval);
     isReading = true;

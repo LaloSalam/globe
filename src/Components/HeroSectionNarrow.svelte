@@ -33,51 +33,17 @@
   let h1Element;
   let pElement;
 
+  let Cimg;
+  let Cheading;
+  let Csubheading;
+  let Cparagraph;
+
   $: Cimg = heroContent[index].img;
   $: Cheading = heroContent[index].heading;
   $: Csubheading = heroContent[index].subheading;
   $: Cparagraph = heroContent[index].p;
 
-  let startX;
-  let dist = 0;
-  const threshold = 100; // Minimum distance for swipe detection (adjust as needed)
-
-  function handleTouchStart(event) {
-    startX = event.touches[0].clientX;
-    dist = 0;
-  }
-
-  function handleTouchMove(event) {
-    const currentX = event.touches[0].clientX;
-    dist = currentX - startX;
-  }
-
-  function handleTouchEnd() {
-    if (Math.abs(dist) > threshold) {
-      if (dist > 0) {
-        console.log("Right swipe detected!");
-        handleSwipe();
-        setTimeout(() => {
-          if (index > 0) {
-            index -= 1;
-          }
-        }, 500);
-        clearInterval(interval); // Clear the previous interval
-        interval = setInterval(autoChangeIndex, 10000); // Start a new interval
-      } else {
-        console.log("Left swipe detected!");
-        handleSwipe();
-        setTimeout(() => {
-          if (index < heroContent.length - 1) {
-            index += 1;
-          }
-        }, 500);
-        clearInterval(interval); // Clear the previous interval
-        interval = setInterval(autoChangeIndex, 10000); // Start a new interval
-      }
-    }
-    dist = 0;
-  }
+  let interval;
 
   function handleSwipe() {
     gsap.fromTo(
@@ -93,29 +59,31 @@
     );
   }
 
-  let interval;
-
   function contIndexChange(num) {
     handleSwipe();
     setTimeout(() => {
       index = num;
-    }, 500);
-    clearInterval(interval); // Clear the previous interval
-    interval = setInterval(autoChangeIndex, 5000); // Start a new interval
+    }, 400);
+    clearInterval(interval);
+    interval = setInterval(autoChangeIndex, 10000);
   }
 
   function autoChangeIndex() {
     handleSwipe();
     setTimeout(() => {
       index = (index + 1) % heroContent.length;
-    }, 500);
+    }, 400);
   }
 
   onMount(() => {
     interval = setInterval(autoChangeIndex, 5000);
 
-    // Clear the interval when the component is destroyed to avoid memory leaks
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      imgElement = null;
+      h1Element = null;
+      pElement = null;
+    };
   });
 
   function handleSlideChange(id) {
@@ -123,9 +91,8 @@
     contIndexChange(iden);
   }
 
-  let active;
-
   let isReading;
+
   function handleReadMore() {
     clearInterval(interval);
     isReading = true;
